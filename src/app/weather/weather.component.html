@@ -1,0 +1,96 @@
+<div class="weather-container">
+  <div class="website-title">
+    <h1>SkyCast 🌤️</h1>
+  </div>
+
+  
+  <div class="search-bar">
+    <input
+      type="text"
+      [(ngModel)]="city"
+      placeholder="Enter city name"
+      class="city-input"
+      autofocus
+    />
+    <button (click)="getWeather()" class="get-weather-btn">Get Weather</button>
+  </div>
+
+ 
+<div *ngIf="weatherData" class="city-name">
+  <h2 style="color: white;">{{ city }}'s Weather</h2>
+</div>
+
+<div class="nani">
+ 
+  <div *ngIf="weatherData" class="weather-sections">
+    
+    <div class="weather-card">
+      <div class="icon">
+        <img src="assets/icons/thermometer.png" alt="Temperature">
+      </div>
+      <div class="details">
+        <p>Temperature: <strong>{{ weatherData.main.temp }}°C</strong></p>
+      </div>
+    </div>
+
+    
+    <div class="weather-card">
+      <div class="icon">
+        <img src="assets/icons/humidity (2).png" alt="Humidity">
+      </div>
+      <div class="details">
+        <p>Humidity: {{ weatherData.main.humidity }}%</p>
+      </div>
+    </div>
+
+    
+    <div class="weather-card">
+      <div class="icon">
+        <img src="assets/icons/windy.png" alt="Wind">
+      </div>
+      <div class="details">
+        <p>Wind: {{ weatherData.wind.speed }} m/s</p>
+      </div>
+    </div>
+
+    
+    <div class="weather-card">
+      <div class="icon">
+        <img src="assets/icons/resilience.png" alt="Pressure">
+      </div>
+      <div class="details">
+        <p>Pressure: {{ weatherData.main.pressure }} hPa</p>
+      </div>
+    </div>
+
+   
+    <div class="weather-card">
+      <div class="icon">
+        <img src="assets/icons/protection.png" alt="UV Index">
+      </div>
+      <div class="details">
+        <p>UV Index: {{ uvData.value }}</p>
+      </div>
+    </div>
+
+    
+    <div *ngIf="airQualityData" class="weather-card aqi">
+      <div class="icon">
+        <img src="assets/icons/air-quality.png" alt="Air Quality">
+      </div>
+      <div class="details">
+        <p>AQI: {{ airQualityData.list[0].main.aqi }}</p>
+        <p>{{ healthTips }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  <div *ngIf="weatherTips" class="additional-section">
+    <h3>Weather Tips</h3>
+    <p>{{ weatherTips }}</p>
+  </div>
+</div>
+
+
